@@ -21,6 +21,7 @@ class MainLayout extends StatelessWidget {
       backgroundColor: const Color(0xFF0A0A0A),
       body: Column(
         children: [
+          // Header
           Container(
             height: 100,
             width: double.infinity,
@@ -51,34 +52,88 @@ class MainLayout extends StatelessWidget {
               ],
             ),
           ),
+
+          // Main content
           Expanded(child: content),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF120C25),
-        child: SizedBox(
-          height: 70,
+
+      // Bottom navigation bar with full-height gradient
+      bottomNavigationBar: Container(
+        height: 70,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF0A0A0A), // zwart boven
+              Color(0xFF3B098C), // paars
+              Color(0xFF007AFF), // blauw onder
+            ],
+            stops: [0.0, 0.58, 1.0],
+          ),
+        ),
+        child: BottomAppBar(
+          color: Colors.transparent,
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 8,
+          elevation: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _navIcon(context, '/home', Icons.home, selectedIndex == 0),
-              _navIcon(context, '/agenda', Icons.calendar_today, selectedIndex == 1),
-              _navIcon(context, '/winner', Icons.emoji_events, selectedIndex == 2),
+              GestureDetector(
+                onTap: () => context.go('/home'),
+                child: Icon(
+                  Icons.home,
+                  size: 36,
+                  color:
+                      selectedIndex == 0 ? Color(0xFFCB5EFF) : Colors.white,
+                ),
+              ),
+              const SizedBox(width: 60),
+              GestureDetector(
+                onTap: () => context.go('/winner'),
+                child: Icon(
+                  Icons.emoji_events,
+                  size: 36,
+                  color:
+                      selectedIndex == 2 ? Color(0xFFCB5EFF) : Colors.white,
+                ),
+              ),
             ],
           ),
         ),
       ),
-    );
-  }
 
-  Widget _navIcon(BuildContext context, String route, IconData icon, bool selected) {
-    return GestureDetector(
-      onTap: () => context.go(route),
-      child: Icon(
-        icon,
-        size: 32,
-        color: selected ? Colors.purpleAccent : Colors.white,
+      // FAB with gradient + shadow + active color handling
+      floatingActionButton: GestureDetector(
+        onTap: () => context.go('/agenda'),
+        child: Container(
+          width: 75,
+          height: 75,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: const LinearGradient(
+              colors: [Color(0xFF5C5CFF), Color(0xFFCB5EFF)],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.9),
+                blurRadius: 5,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Icon(
+              Icons.calendar_today,
+              size: 34,
+              color: selectedIndex == 1 ? Colors.black : Colors.white,
+            ),
+          ),
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
