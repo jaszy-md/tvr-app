@@ -23,13 +23,13 @@ class MainLayout extends StatelessWidget {
         children: [
           // Header
           Container(
-            height: 100,
+            height: 120,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Color(0xFF0A0A0A),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0x33007BFF), // 20% opacity
+                  color: Color(0x33007BFF),
                   offset: Offset(0, 4),
                   blurRadius: 4,
                 ),
@@ -41,7 +41,7 @@ class MainLayout extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/logo-title.png',
-                  height: 50,
+                  height: 60,
                   fit: BoxFit.contain,
                 ),
                 Image.asset(
@@ -66,9 +66,9 @@ class MainLayout extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF0A0A0A), // zwart boven
-              Color(0xFF3B098C), // paars
-              Color(0xFF007AFF), // blauw onder
+              Color(0xFF0A0A0A),
+              Color(0xFF3B098C),
+              Color(0xFF007AFF),
             ],
             stops: [0.0, 0.58, 1.0],
           ),
@@ -105,7 +105,7 @@ class MainLayout extends StatelessWidget {
         ),
       ),
 
-      // FAB with gradient + shadow + active color handling
+      // Floating Action Button
       floatingActionButton: GestureDetector(
         onTap: () => context.go('/agenda'),
         child: Container(
@@ -116,6 +116,10 @@ class MainLayout extends StatelessWidget {
             gradient: const LinearGradient(
               colors: [Color(0xFF5C5CFF), Color(0xFFCB5EFF)],
             ),
+            border: Border.all(
+              color: Color(0xFF007AFF), // Border toegevoegd
+              width: 4,
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.9),
@@ -125,9 +129,10 @@ class MainLayout extends StatelessWidget {
             ],
           ),
           child: Center(
-            child: Icon(
-              Icons.calendar_today,
-              size: 34,
+            child: Image.asset(
+              'assets/images/taskplanning.png',
+              width: 34,
+              height: 34,
               color: selectedIndex == 1 ? Colors.black : Colors.white,
             ),
           ),
