@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tvr_app/layout/main_layout.dart';
 import 'package:tvr_app/views/home/home_page.dart';
@@ -20,8 +19,9 @@ class AppNavigation {
             routes: [
               GoRoute(
                 path: '/home',
-                pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: HomePage()),
+                pageBuilder:
+                    (context, state) =>
+                        const NoTransitionPage(child: HomePage()),
               ),
             ],
           ),
@@ -29,8 +29,9 @@ class AppNavigation {
             routes: [
               GoRoute(
                 path: '/agenda',
-                pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: AgendaPage()),
+                pageBuilder:
+                    (context, state) =>
+                        const NoTransitionPage(child: AgendaPage()),
               ),
             ],
           ),
@@ -38,8 +39,9 @@ class AppNavigation {
             routes: [
               GoRoute(
                 path: '/winner',
-                pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: WinnerPage()),
+                pageBuilder:
+                    (context, state) =>
+                        const NoTransitionPage(child: WinnerPage()),
               ),
             ],
           ),

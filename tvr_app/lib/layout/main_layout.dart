@@ -5,11 +5,7 @@ class MainLayout extends StatelessWidget {
   final Widget? child;
   final StatefulNavigationShell? navigationShell;
 
-  const MainLayout({
-    super.key,
-    this.child,
-    this.navigationShell,
-  });
+  const MainLayout({super.key, this.child, this.navigationShell});
 
   @override
   Widget build(BuildContext context) {
@@ -21,38 +17,57 @@ class MainLayout extends StatelessWidget {
       backgroundColor: const Color(0xFF0A0A0A),
       body: Column(
         children: [
-          // Header
-          Container(
-            height: 120,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: Color(0xFF0A0A0A),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x33007BFF),
-                  offset: Offset(0, 4),
-                  blurRadius: 4,
+          // Header + overlapping image
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
+                height: 120,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF0A0A0A),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x33007BFF),
+                      offset: Offset(0, 4),
+                      blurRadius: 4,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            padding: const EdgeInsets.only(top: 30, left: 16, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  'assets/images/logo-title.png',
-                  height: 60,
-                  fit: BoxFit.contain,
+                padding: const EdgeInsets.only(top: 30, left: 16, right: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      'assets/images/logo-title.png',
+                      height: 60,
+                      fit: BoxFit.contain,
+                    ),
+                    Image.asset(
+                      'assets/images/QR.png',
+                      height: 40,
+                      fit: BoxFit.contain,
+                    ),
+                  ],
                 ),
-                Image.asset(
-                  'assets/images/QR.png',
-                  height: 40,
-                  fit: BoxFit.contain,
+              ),
+              Positioned(
+                bottom: -40,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/reboot-img.png',
+                    height: 40,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-
+          const SizedBox(
+            height: 20,
+          ), // zodat content niet onder de afbeelding start
           // Main content
           Expanded(child: content),
         ],
@@ -65,11 +80,7 @@ class MainLayout extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0A0A0A),
-              Color(0xFF3B098C),
-              Color(0xFF007AFF),
-            ],
+            colors: [Color(0xFF0A0A0A), Color(0xFF3B098C), Color(0xFF007AFF)],
             stops: [0.0, 0.58, 1.0],
           ),
         ),
@@ -86,8 +97,7 @@ class MainLayout extends StatelessWidget {
                 child: Icon(
                   Icons.home,
                   size: 36,
-                  color:
-                      selectedIndex == 0 ? Color(0xFFCB5EFF) : Colors.white,
+                  color: selectedIndex == 0 ? Color(0xFFCB5EFF) : Colors.white,
                 ),
               ),
               const SizedBox(width: 60),
@@ -96,8 +106,7 @@ class MainLayout extends StatelessWidget {
                 child: Icon(
                   Icons.emoji_events,
                   size: 36,
-                  color:
-                      selectedIndex == 2 ? Color(0xFFCB5EFF) : Colors.white,
+                  color: selectedIndex == 2 ? Color(0xFFCB5EFF) : Colors.white,
                 ),
               ),
             ],
@@ -116,10 +125,7 @@ class MainLayout extends StatelessWidget {
             gradient: const LinearGradient(
               colors: [Color(0xFF5C5CFF), Color(0xFFCB5EFF)],
             ),
-            border: Border.all(
-              color: Color(0xFF007AFF), // Border toegevoegd
-              width: 4,
-            ),
+            border: Border.all(color: Color(0xFF007AFF), width: 4),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.9),
