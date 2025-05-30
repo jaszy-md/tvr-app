@@ -73,13 +73,13 @@ class MainLayout extends StatelessWidget {
 
       // Bottom navigation bar
       bottomNavigationBar: Container(
-        height: 70,
+        height: 90,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [Color(0xFF0A0A0A), Color(0xFF3B098C), Color(0xFF007AFF)],
-            stops: [0.0, 0.58, 1.0],
+            stops: [0.0, 0.35, 1.7],
           ),
         ),
         child: BottomAppBar(

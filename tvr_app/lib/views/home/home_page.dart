@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
-                            fontFamily: 'Jaro',
+                            fontFamily: 'Jura',
                           ),
                         ),
                       ],
@@ -148,14 +148,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
             // DEMO 1
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Expanded(
                     child: Text(
                       'Doe mee aan\n1 van de geweldige demo’s',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 23,
+                        fontFamily: 'Jura',
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -188,7 +192,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
             // DEMO 2
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -218,7 +222,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   const Expanded(
                     child: Text(
                       'Geen tv kijken\nmaar spelen met TVR!',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 23,
+                        fontFamily: 'Jura',
+                      ),
                     ),
                   ),
                 ],
