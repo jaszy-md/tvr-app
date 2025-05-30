@@ -15,65 +15,63 @@ class MainLayout extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0A),
-      body: Column(
+      body: Stack(
         children: [
-          // Header + overlapping image
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                height: 120,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Color(0xFF0A0A0A),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x33007BFF),
-                      offset: Offset(0, 4),
-                      blurRadius: 4,
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.only(top: 30, left: 16, right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'assets/images/logo-title.png',
-                      height: 60,
-                      fit: BoxFit.contain,
-                    ),
-                    Image.asset(
-                      'assets/images/QR.png',
-                      height: 40,
-                      fit: BoxFit.contain,
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: -40,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/reboot-img.png',
-                    height: 40,
-                    fit: BoxFit.contain,
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 120),
+              child: content,
+            ),
+          ),
+
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Column(
+              children: [
+                Container(
+                  height: 120,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF0A0A0A),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x33007BFF),
+                        offset: Offset(0, 4),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.only(top: 30, left: 16, right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        'assets/images/logo-title.png',
+                        height: 60,
+                        fit: BoxFit.contain,
+                      ),
+                      Image.asset(
+                        'assets/images/QR.png',
+                        height: 40,
+                        fit: BoxFit.contain,
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                Image.asset(
+                  'assets/images/reboot-img.png',
+                  height: 40,
+                  fit: BoxFit.contain,
+                ),
+              ],
+            ),
           ),
-          const SizedBox(
-            height: 20,
-          ), // zodat content niet onder de afbeelding start
-          // Main content
-          Expanded(child: content),
         ],
       ),
 
-      // Bottom navigation bar with full-height gradient
+      // Bottom navigation bar
       bottomNavigationBar: Container(
         height: 70,
         decoration: const BoxDecoration(
@@ -114,7 +112,6 @@ class MainLayout extends StatelessWidget {
         ),
       ),
 
-      // Floating Action Button
       floatingActionButton: GestureDetector(
         onTap: () => context.go('/agenda'),
         child: Container(
