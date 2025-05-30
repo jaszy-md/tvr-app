@@ -5,14 +5,12 @@ import 'package:tvr_app/navigation/app_navigation.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Forceer zwarte navigation bar met lichte iconen
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      systemNavigationBarColor: Color(0xFF0A0A0A), // Zwarte achtergrond
-      systemNavigationBarDividerColor: Color(0xFF0A0A0A), // Geen rand
-      systemNavigationBarIconBrightness: Brightness.light, // Witte iconen
-      systemNavigationBarContrastEnforced:
-          false, // Voorkom automatische aanpassing
+      systemNavigationBarColor: Color(0xFF0A0A0A),
+      systemNavigationBarDividerColor: Color(0xFF0A0A0A),
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarContrastEnforced: false,
     ),
   );
 
