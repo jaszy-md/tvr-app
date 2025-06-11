@@ -222,6 +222,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   const Expanded(
                     child: Text(
                       'Geen tv kijken\nmaar spelen met TVR!',
+                      textAlign: TextAlign.right, // <-- toegevoegd
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 23,
@@ -324,7 +325,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
             ),
-
             const SizedBox(height: 60),
           ],
         ),
