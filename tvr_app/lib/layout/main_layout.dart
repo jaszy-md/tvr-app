@@ -51,10 +51,13 @@ class MainLayout extends StatelessWidget {
                         height: 60,
                         fit: BoxFit.contain,
                       ),
-                      Image.asset(
-                        'assets/images/QR.png',
-                        height: 40,
-                        fit: BoxFit.contain,
+                      GestureDetector(
+                        onTap: () => context.go('/qr-check'),
+                        child: Image.asset(
+                          'assets/images/QR.png',
+                          height: 40,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ],
                   ),
@@ -116,7 +119,7 @@ class MainLayout extends StatelessWidget {
         ),
       ),
       floatingActionButton: Transform.translate(
-        offset: const Offset(0, 10), // 10 pixels naar beneden
+        offset: const Offset(0, 10),
         child: GestureDetector(
           onTap: () => context.go('/agenda'),
           child: Container(

@@ -62,7 +62,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // HEADER
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -121,32 +120,48 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
             const SizedBox(height: 20),
 
-            // COMING SOON
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: const BoxDecoration(
-                gradient: RadialGradient(
-                  center: Alignment.centerLeft,
-                  radius: 2,
-                  colors: [Color(0xFF007BFF), Color(0xFF004A99)],
+            Transform.translate(
+              offset: const Offset(-10, 0),
+              child: Container(
+                padding: const EdgeInsets.all(2), // Borderdikte
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xFF007BFF),
+                      Color(0xFF8000FF),
+                    ], // blauw-paars
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
                 ),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: const Text(
-                'Coming Soon!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF0A0A0A), // zwarte achtergrond
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(18),
+                      bottomRight: Radius.circular(18),
+                    ),
+                  ),
+                  child: const Text(
+                    'Coming Soon!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 30),
-
-            // DEMO 1
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
@@ -189,8 +204,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(height: 50),
-
-            // DEMO 2
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
@@ -222,7 +235,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   const Expanded(
                     child: Text(
                       'Geen tv kijken\nmaar spelen met TVR!',
-                      textAlign: TextAlign.right, // <-- toegevoegd
+                      textAlign: TextAlign.right,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 23,
@@ -234,8 +247,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(height: 40),
-
-            // WINNERS
             Stack(
               children: [
                 Image.asset(
@@ -265,8 +276,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
             const SizedBox(height: 40),
-
-            // SHOPSECTIE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Column(
