@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tvr_app/widgets/dialogs/explain_qr.dart';
 
 class WinnerPage extends StatelessWidget {
   const WinnerPage({super.key});
@@ -112,10 +113,10 @@ class _StepList extends StatelessWidget {
 
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 6),
-          height: 56, // Lagere vaste hoogte
+          height: 56,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: Colors.indigo[800],
+            color: Color(0xFF0C1732),
             borderRadius: BorderRadius.circular(12),
           ),
           child:
@@ -185,10 +186,17 @@ class _TabDecorations extends StatelessWidget {
           Positioned(
             bottom: 150,
             right: 17,
-            child: Image.asset(
-              'assets/images/question.png',
-              height: 50,
-              width: 50,
+            child: GestureDetector(
+              onTap:
+                  () => showDialog(
+                    context: context,
+                    builder: (context) => const ExplainQRDialog(),
+                  ),
+              child: Image.asset(
+                'assets/images/question.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
         ],

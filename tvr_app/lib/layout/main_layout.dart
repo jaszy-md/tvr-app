@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class MainLayout extends StatelessWidget {
@@ -23,7 +24,6 @@ class MainLayout extends StatelessWidget {
               child: content,
             ),
           ),
-
           Positioned(
             top: 0,
             left: 0,
@@ -70,10 +70,8 @@ class MainLayout extends StatelessWidget {
           ),
         ],
       ),
-
-      // Bottom navigation bar
       bottomNavigationBar: Container(
-        height: 90,
+        height: 75,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -94,49 +92,68 @@ class MainLayout extends StatelessWidget {
                 onTap: () => context.go('/home'),
                 child: Icon(
                   Icons.home,
-                  size: 36,
-                  color: selectedIndex == 0 ? Color(0xFFCB5EFF) : Colors.white,
+                  size: 40,
+                  color:
+                      selectedIndex == 0
+                          ? const Color.fromARGB(255, 53, 151, 255)
+                          : Colors.white,
                 ),
               ),
               const SizedBox(width: 60),
               GestureDetector(
                 onTap: () => context.go('/winner'),
-                child: Icon(
-                  Icons.emoji_events,
-                  size: 36,
-                  color: selectedIndex == 2 ? Color(0xFFCB5EFF) : Colors.white,
+                child: Image.asset(
+                  'assets/images/nav-trophy.png',
+                  width: 40,
+                  height: 40,
+                  color:
+                      selectedIndex == 2
+                          ? const Color.fromARGB(255, 53, 151, 255)
+                          : Colors.white,
                 ),
               ),
             ],
           ),
         ),
       ),
-
-      floatingActionButton: GestureDetector(
-        onTap: () => context.go('/agenda'),
-        child: Container(
-          width: 75,
-          height: 75,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: const LinearGradient(
-              colors: [Color(0xFF5C5CFF), Color(0xFFCB5EFF)],
-            ),
-            border: Border.all(color: Color(0xFF007AFF), width: 4),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.9),
-                blurRadius: 5,
-                offset: const Offset(0, 4),
+      floatingActionButton: Transform.translate(
+        offset: const Offset(0, 10), // 10 pixels naar beneden
+        child: GestureDetector(
+          onTap: () => context.go('/agenda'),
+          child: Container(
+            width: 75,
+            height: 75,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: const LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Color(0xFF5C5CFF),
+                  Color(0xFF7C5CFF),
+                  Color(0xFFCB5EFF),
+                ],
+                stops: [0.0, 0.6, 1.0],
               ),
-            ],
-          ),
-          child: Center(
-            child: Image.asset(
-              'assets/images/taskplanning.png',
-              width: 34,
-              height: 34,
-              color: selectedIndex == 1 ? Colors.black : Colors.white,
+              border: Border.all(color: Color(0xFF007AFF), width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.9),
+                  blurRadius: 5,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Image.asset(
+                'assets/images/taskplanning.png',
+                width: 40,
+                height: 40,
+                color:
+                    selectedIndex == 1
+                        ? const Color.fromARGB(255, 113, 182, 255)
+                        : Colors.white,
+              ),
             ),
           ),
         ),
