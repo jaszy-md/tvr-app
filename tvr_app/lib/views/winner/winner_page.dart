@@ -171,7 +171,7 @@ class _TabDecorations extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            bottom: 16,
+            bottom: 44,
             left: 16,
             child:
                 showScoreImage
