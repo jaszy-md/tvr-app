@@ -123,15 +123,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Transform.translate(
               offset: const Offset(-10, 0),
               child: Container(
-                padding: const EdgeInsets.all(2), // Borderdikte
+                padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [
-                      Color(0xFF007BFF),
-                      Color(0xFF8000FF),
-                    ], // blauw-paars
+                    colors: [Color(0xFF007BFF), Color(0xFF8000FF)],
                   ),
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(20),
@@ -144,7 +141,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     vertical: 10,
                   ),
                   decoration: const BoxDecoration(
-                    color: Color(0xFF0A0A0A), // zwarte achtergrond
+                    color: Color(0xFF0A0A0A),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(18),
                       bottomRight: Radius.circular(18),
