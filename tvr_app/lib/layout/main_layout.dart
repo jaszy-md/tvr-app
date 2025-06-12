@@ -73,7 +73,7 @@ class MainLayout extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 75,
+        height: 90,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -92,26 +92,31 @@ class MainLayout extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () => context.go('/home'),
-                child: Icon(
-                  Icons.home,
-                  size: 40,
-                  color:
-                      selectedIndex == 0
-                          ? const Color.fromARGB(255, 53, 151, 255)
-                          : Colors.white,
+                child: Transform.translate(
+                  offset: const Offset(0, -6),
+                  child: Icon(
+                    Icons.home,
+                    size: 40,
+                    color:
+                        selectedIndex == 0
+                            ? const Color.fromARGB(255, 53, 151, 255)
+                            : Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(width: 60),
               GestureDetector(
                 onTap: () => context.go('/winner'),
-                child: Image.asset(
-                  'assets/images/nav-trophy.png',
-                  width: 40,
-                  height: 40,
-                  color:
-                      selectedIndex == 2
-                          ? const Color.fromARGB(255, 53, 151, 255)
-                          : Colors.white,
+                child: Transform.translate(
+                  offset: const Offset(0, -6),
+                  child: Icon(
+                    Icons.emoji_events,
+                    size: 40,
+                    color:
+                        selectedIndex == 2
+                            ? const Color.fromARGB(255, 53, 151, 255)
+                            : Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -123,8 +128,8 @@ class MainLayout extends StatelessWidget {
         child: GestureDetector(
           onTap: () => context.go('/agenda'),
           child: Container(
-            width: 75,
-            height: 75,
+            width: 65,
+            height: 65,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: const LinearGradient(

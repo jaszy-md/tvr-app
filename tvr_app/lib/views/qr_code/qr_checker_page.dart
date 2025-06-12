@@ -10,16 +10,18 @@ class QRCheckerPage extends StatefulWidget {
 }
 
 class _QRCheckerPageState extends State<QRCheckerPage> {
-  final String allowedQR = 'https://qrco.de/bg4Yt2';
-  bool _scanned = false;
+  final String allowedQR = 'https://www.tvr-project.com';
+  bool _navigating = false;
+  final MobileScannerController _scannerController = MobileScannerController();
 
   void _handleBarcode(BarcodeCapture barcodeCapture) {
-    if (_scanned) return;
-
     final code = barcodeCapture.barcodes.first.rawValue;
 
+    if (code == null || _navigating) return;
+
     if (code == allowedQR) {
-      setState(() => _scanned = true);
+      setState(() => _navigating = true);
+      _scannerController.stop();
       context.go('/qr');
     } else {
       ScaffoldMessenger.of(
@@ -29,17 +31,20 @@ class _QRCheckerPageState extends State<QRCheckerPage> {
   }
 
   @override
+  void dispose() {
+    _scannerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
           MobileScanner(
+            controller: _scannerController,
             onDetect: _handleBarcode,
-            controller: MobileScannerController(
-              detectionSpeed: DetectionSpeed.normal,
-              facing: CameraFacing.back,
-            ),
             overlayBuilder: (context, constraints) => const ScannerOverlay(),
           ),
           Positioned(

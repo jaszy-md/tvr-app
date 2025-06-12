@@ -17,7 +17,6 @@ class _QRPageState extends State<QRPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0A),
       appBar: AppBar(
-        title: const Text('Invoeren gegevens'),
         backgroundColor: const Color(0xFF0A0A0A),
         foregroundColor: Colors.white,
         elevation: 0,
@@ -93,7 +92,10 @@ class _QRPageState extends State<QRPage> {
                     vertical: 12,
                   ),
                 ),
-                child: const Text('Verstuur', style: TextStyle(fontSize: 16)),
+                child: const Text(
+                  'Verstuur',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
               ),
             ],
           ),

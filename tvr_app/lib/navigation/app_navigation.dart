@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:tvr_app/flash_screen/flash_screen.dart';
+import 'package:tvr_app/views/flash_screen/flash_screen.dart';
 import 'package:tvr_app/layout/main_layout.dart';
 import 'package:tvr_app/views/home/home_page.dart';
 import 'package:tvr_app/views/agenda/agenda_page.dart';
@@ -15,6 +15,7 @@ class AppNavigation {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
 
+      // Shell with bottom navigation
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainLayout(navigationShell: navigationShell);
@@ -53,16 +54,20 @@ class AppNavigation {
         ],
       ),
 
-      // QR Scanner pagina buiten de shell
+      // QR Scanner en QR Result page buiten de shell, maar wél met MainLayout
       GoRoute(
         path: '/qr-check',
         pageBuilder:
-            (context, state) =>
-                NoTransitionPage(child: MainLayout(child: QRCheckerPage())),
+            (context, state) => const NoTransitionPage(
+              child: MainLayout(child: QRCheckerPage()),
+            ),
       ),
-
-      // Doelpagina na geldige QR scan
-      GoRoute(path: '/qr', builder: (context, state) => const QRPage()),
+      GoRoute(
+        path: '/qr',
+        pageBuilder:
+            (context, state) =>
+                const NoTransitionPage(child: MainLayout(child: QRPage())),
+      ),
     ],
   );
 }
