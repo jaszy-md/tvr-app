@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,12 +15,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late AnimationController demo2Controller;
   late AnimationController arrowController;
   late Animation<Offset> arrowAnimation;
+  int _textAnimationKey = 0;
 
   Future<void> _refreshPage() async {
     demo1Controller.reset();
     demo2Controller.reset();
     ticketBroken = false;
-
+    setState(() {
+      _textAnimationKey++; // 🔁 forceer rebuild van AnimatedTextKit
+    });
     await Future.delayed(const Duration(milliseconds: 300));
     demo1Controller.forward();
     await Future.delayed(const Duration(milliseconds: 400));
@@ -95,7 +99,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF122846).withOpacity(0.4),
+                          color: Color(
+                            0xFF122846,
+                          ).withOpacity(0.4), // ✅ zonder const
                           offset: const Offset(0, 1),
                           blurRadius: 10,
                         ),
@@ -108,8 +114,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     offset: const Offset(0, -50),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'WELKOM',
                           style: TextStyle(
                             fontSize: 24,
@@ -117,14 +123,36 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          'REBOOT REALITY\nEvents',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
+                        const SizedBox(height: 8),
+                        DefaultTextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                             fontFamily: 'Jura',
+                            height: 1.4,
+                          ),
+                          child: SizedBox(
+                            width: double.infinity, // zodat center align werkt
+                            child: AnimatedTextKit(
+                              key: ValueKey(
+                                _textAnimationKey,
+                              ), // ✅ unieke key per refresh
+                              isRepeatingAnimation: false,
+                              totalRepeatCount: 1,
+                              animatedTexts: [
+                                TypewriterAnimatedText(
+                                  'REBOOT REALITY\nEvents',
+                                  textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'Jura',
+                                    height: 1.4,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  speed: const Duration(milliseconds: 150),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -133,6 +161,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ],
             ),
+
             const SizedBox(height: 20),
             Transform.translate(
               offset: const Offset(-10, 0),
