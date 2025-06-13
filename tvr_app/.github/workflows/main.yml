@@ -21,14 +21,14 @@ jobs:
 
       - name: Install Dependencies
         run: flutter pub get
-        working-directory: voice_tab_app
+        working-directory: tvr_app
 
       - name: Build APK
         run: flutter build apk --debug
-        working-directory: voice_tab_app
+        working-directory: tvr_app
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: voice_tab_app/build/app/outputs/flutter-apk/app-debug.apk
+          path: tvr_app/build/app/outputs/flutter-apk/app-debug.apk
