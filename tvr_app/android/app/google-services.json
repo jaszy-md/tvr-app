@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "21385820263",
+    "project_id": "tvr-project",
+    "storage_bucket": "tvr-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21385820263:android:05010130590e598330fcc2",
+        "android_client_info": {
+          "package_name": "com.example.tvr_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFfIQHhpictREmOyPpQ1s-z17Bm7EkXuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:tvr_app/views/flash_screen/flash_screen.dart';
 import 'package:tvr_app/layout/main_layout.dart';
-import 'package:tvr_app/views/home/home_page.dart';
 import 'package:tvr_app/views/agenda/agenda_page.dart';
+import 'package:tvr_app/views/flash_screen/flash_screen.dart';
+import 'package:tvr_app/views/home/home_page.dart';
 import 'package:tvr_app/views/qr_code/qr_checker_page.dart';
 import 'package:tvr_app/views/qr_code/qr_page.dart';
+import 'package:tvr_app/views/winner/score_board.dart';
 import 'package:tvr_app/views/winner/winner_page.dart';
 
 class AppNavigation {
@@ -15,7 +16,6 @@ class AppNavigation {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
 
-      // Shell with bottom navigation
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainLayout(navigationShell: navigationShell);
@@ -54,7 +54,7 @@ class AppNavigation {
         ],
       ),
 
-      // QR Scanner en QR Result page buiten de shell, maar wél met MainLayout
+      // QR & Scoreboard buiten shell, maar wel met MainLayout
       GoRoute(
         path: '/qr-check',
         pageBuilder:
@@ -67,6 +67,13 @@ class AppNavigation {
         pageBuilder:
             (context, state) =>
                 const NoTransitionPage(child: MainLayout(child: QRPage())),
+      ),
+      GoRoute(
+        path: '/score_board',
+        pageBuilder:
+            (context, state) => const NoTransitionPage(
+              child: MainLayout(child: ScoreBoardPage()),
+            ),
       ),
     ],
   );
