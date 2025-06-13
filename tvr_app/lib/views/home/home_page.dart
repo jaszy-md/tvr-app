@@ -12,6 +12,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   late AnimationController demo1Controller;
   late AnimationController demo2Controller;
+  late AnimationController arrowController;
+  late Animation<Offset> arrowAnimation;
 
   Future<void> _refreshPage() async {
     demo1Controller.reset();
@@ -44,12 +46,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       await Future.delayed(const Duration(milliseconds: 400));
       demo2Controller.forward();
     });
+
+    arrowController = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    arrowAnimation = Tween<Offset>(
+      begin: Offset.zero,
+      end: const Offset(0.1, 0),
+    ).animate(
+      CurvedAnimation(parent: arrowController, curve: Curves.easeInOut),
+    );
   }
 
   @override
   void dispose() {
     demo1Controller.dispose();
     demo2Controller.dispose();
+    arrowController.dispose();
     super.dispose();
   }
 
@@ -119,7 +134,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
             const SizedBox(height: 20),
-
             Transform.translate(
               offset: const Offset(-10, 0),
               child: Container(
@@ -316,12 +330,27 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 child: Image.asset(
                                   ticketBroken
                                       ? 'assets/images/ticket-broken.png'
-                                      : 'assets/images/ticket-whole.png',
+                                      : 'assets/images/Ticket.png',
                                   width: 100,
                                 ),
                               ),
-                              const SizedBox(width: 8),
-                              Image.asset('assets/images/arrow.png', width: 60),
+
+                              const SizedBox(width: 6),
+                              Transform.translate(
+                                offset: const Offset(
+                                  -12,
+                                  -12,
+                                ), // Links en omhoog
+                                child: SlideTransition(
+                                  position: arrowAnimation,
+                                  child: Image.asset(
+                                    'assets/images/arrow.png',
+                                    width: 90,
+                                    height: 90,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ],

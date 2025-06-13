@@ -15,7 +15,7 @@ class MainLayout extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0A),
-      resizeToAvoidBottomInset: false, // voorkomt dat FAB omhoog springt
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Positioned.fill(

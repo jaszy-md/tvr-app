@@ -114,7 +114,7 @@ class _StepList extends StatelessWidget {
 
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 6),
-          height: 56,
+          height: 50,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
             color: const Color(0xFF0C1732),
@@ -136,12 +136,15 @@ class _StepList extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Image.asset('assets/images/QR.png'),
+                      GestureDetector(
+                        onTap: () => context.go('/qr-checker'),
+                        child: SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Image.asset('assets/images/QR.png'),
+                          ),
                         ),
                       ),
                     ],
@@ -173,7 +176,7 @@ class _TabDecorations extends StatelessWidget {
         children: [
           if (showScoreImage)
             Positioned(
-              bottom: 44,
+              bottom: 50,
               left: 16,
               child: GestureDetector(
                 onTap: () => context.go('/score_board'),
@@ -185,11 +188,11 @@ class _TabDecorations extends StatelessWidget {
           Positioned(
             bottom: 0,
             right: 0,
-            child: Image.asset('assets/images/trophy.png', height: 130),
+            child: Image.asset('assets/images/trophy.png', height: 120),
           ),
           Positioned(
-            bottom: 150,
-            right: 17,
+            bottom: 125,
+            right: 20,
             child: GestureDetector(
               onTap:
                   () => showDialog(
