@@ -47,14 +47,6 @@ class _QRCheckerPageState extends State<QRCheckerPage> {
             onDetect: _handleBarcode,
             overlayBuilder: (context, constraints) => const ScannerOverlay(),
           ),
-          Positioned(
-            top: 60,
-            left: 20,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () => context.pop(),
-            ),
-          ),
         ],
       ),
     );
