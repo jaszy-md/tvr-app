@@ -53,7 +53,7 @@ class MainLayout extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                       GestureDetector(
-                        onTap: () => context.go('/qr-check'),
+                        onTap: () => context.go('/qr-checker'),
                         child: Image.asset(
                           'assets/images/QR.png',
                           height: 40,

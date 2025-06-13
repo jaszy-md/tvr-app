@@ -16,11 +16,13 @@ class AppNavigation {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
 
+      // Shell navigation met MainLayout voor consistente layout
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainLayout(navigationShell: navigationShell);
         },
         branches: [
+          // Home branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -31,6 +33,8 @@ class AppNavigation {
               ),
             ],
           ),
+
+          // Agenda branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -41,6 +45,8 @@ class AppNavigation {
               ),
             ],
           ),
+
+          // Winner branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -51,29 +57,30 @@ class AppNavigation {
               ),
             ],
           ),
-        ],
-      ),
 
-      // QR & Scoreboard buiten shell, maar wel met MainLayout
-      GoRoute(
-        path: '/qr-check',
-        pageBuilder:
-            (context, state) => const NoTransitionPage(
-              child: MainLayout(child: QRCheckerPage()),
-            ),
-      ),
-      GoRoute(
-        path: '/qr',
-        pageBuilder:
-            (context, state) =>
-                const NoTransitionPage(child: MainLayout(child: QRPage())),
-      ),
-      GoRoute(
-        path: '/score_board',
-        pageBuilder:
-            (context, state) => const NoTransitionPage(
-              child: MainLayout(child: ScoreBoardPage()),
-            ),
+          // QR en Scoreboard branch
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/qr',
+                pageBuilder:
+                    (context, state) => const NoTransitionPage(child: QRPage()),
+              ),
+              GoRoute(
+                path: '/qr-checker',
+                pageBuilder:
+                    (context, state) =>
+                        const NoTransitionPage(child: QRCheckerPage()),
+              ),
+              GoRoute(
+                path: '/score_board',
+                pageBuilder:
+                    (context, state) =>
+                        const NoTransitionPage(child: ScoreBoardPage()),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );

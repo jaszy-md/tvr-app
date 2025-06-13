@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tvr_app/widgets/dialogs/explain_qr.dart';
 
 class WinnerPage extends StatelessWidget {
@@ -116,7 +117,7 @@ class _StepList extends StatelessWidget {
           height: 56,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: Color(0xFF0C1732),
+            color: const Color(0xFF0C1732),
             borderRadius: BorderRadius.circular(12),
           ),
           child:
@@ -170,14 +171,17 @@ class _TabDecorations extends StatelessWidget {
     return Positioned.fill(
       child: Stack(
         children: [
-          Positioned(
-            bottom: 44,
-            left: 16,
-            child:
-                showScoreImage
-                    ? Image.asset('assets/images/scoreboard.png', height: 90)
-                    : const SizedBox(width: 90),
-          ),
+          if (showScoreImage)
+            Positioned(
+              bottom: 44,
+              left: 16,
+              child: GestureDetector(
+                onTap: () => context.go('/score_board'),
+                child: Image.asset('assets/images/scoreboard.png', height: 90),
+              ),
+            )
+          else
+            const SizedBox(width: 90),
           Positioned(
             bottom: 0,
             right: 0,

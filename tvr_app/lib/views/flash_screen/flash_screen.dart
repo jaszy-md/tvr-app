@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     setState(() {});
 
-    _progressTimer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
+    _progressTimer = Timer.periodic(const Duration(milliseconds: 150), (timer) {
       setState(() {
         _progress += 1 / _totalSteps;
         if (_progress >= 1.0) {
