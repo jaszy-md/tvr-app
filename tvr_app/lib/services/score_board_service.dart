@@ -33,12 +33,20 @@ class ScoreboardService {
     if (docs.length < 3) return;
 
     final shuffled = [...docs]..shuffle(Random());
+    final top3 = shuffled.take(3).toList();
+    final rest = shuffled.skip(3);
 
-    for (int i = 0; i < docs.length; i++) {
-      final score = (i < 3) ? i + 1 : 0;
-      await shuffled[i].reference.set({
-        'score_position': score,
-      }, SetOptions(merge: true));
-    }
+    // 🔁 Top 3 updates 1 voor 1 — synchroon voor betrouwbaarheid
+    await top3[0].reference.set({'score_position': 1}, SetOptions(merge: true));
+    await top3[1].reference.set({'score_position': 2}, SetOptions(merge: true));
+    await top3[2].reference.set({'score_position': 3}, SetOptions(merge: true));
+
+    // ⏩ De rest mag asynchroon (0 is minder kritisch)
+    await Future.wait(
+      rest.map(
+        (doc) =>
+            doc.reference.set({'score_position': 0}, SetOptions(merge: true)),
+      ),
+    );
   }
 }
