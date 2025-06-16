@@ -48,6 +48,13 @@ class ParticipantList extends StatelessWidget {
                             p['name'],
                             style: const TextStyle(color: Colors.white),
                           ),
+                          tilePadding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          collapsedBackgroundColor: Colors.white.withOpacity(
+                            0.02,
+                          ),
+                          backgroundColor: Colors.white.withOpacity(0.05),
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(
@@ -68,13 +75,6 @@ class ParticipantList extends StatelessWidget {
                               ),
                             ),
                           ],
-                          tilePadding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                          ),
-                          collapsedBackgroundColor: Colors.white.withOpacity(
-                            0.02,
-                          ),
-                          backgroundColor: Colors.white.withOpacity(0.05),
                         );
                       },
                     ),

@@ -23,12 +23,22 @@ jobs:
         run: flutter pub get
         working-directory: tvr_app
 
-      - name: Build APK
+      - name: Build Debug APK
         run: flutter build apk --debug
         working-directory: tvr_app
 
-      - name: Upload APK Artifact
+      - name: Build Release APK
+        run: flutter build apk --release
+        working-directory: tvr_app
+
+      - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
           path: tvr_app/build/app/outputs/flutter-apk/app-debug.apk
+
+      - name: Upload Release APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: tvr_app/build/app/outputs/flutter-apk/app-release.apk
