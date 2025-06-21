@@ -54,7 +54,6 @@ class _ScoreBoardPageState extends State<ScoreBoardPage>
 
     await _scoreboardService.shuffleWinners();
 
-    // ⏳ Vervangt de vaste delay – wacht tot Firestore echt 3 winnaars teruggeeft
     await _waitUntilThreeWinners();
 
     setState(() {
@@ -82,7 +81,6 @@ class _ScoreBoardPageState extends State<ScoreBoardPage>
       await Future.delayed(const Duration(milliseconds: 200));
     }
 
-    // Na 5 sec alsnog doorgaan, maar dan weet je dat er iets misging
     final fallback = await _scoreboardService.fetchParticipants();
     setState(() => participants = fallback);
   }

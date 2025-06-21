@@ -16,13 +16,11 @@ class AppNavigation {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
 
-      // Shell navigation met MainLayout voor consistente layout
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainLayout(navigationShell: navigationShell);
         },
         branches: [
-          // Home branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -34,7 +32,6 @@ class AppNavigation {
             ],
           ),
 
-          // Agenda branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -46,7 +43,6 @@ class AppNavigation {
             ],
           ),
 
-          // Winner branch
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -58,7 +54,6 @@ class AppNavigation {
             ],
           ),
 
-          // QR en Scoreboard branch
           StatefulShellBranch(
             routes: [
               GoRoute(

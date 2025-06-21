@@ -61,13 +61,12 @@ class _SplashScreenState extends State<SplashScreen> {
       body: SafeArea(
         child: Center(
           child: Transform.translate(
-            offset: const Offset(0, -40), // 🔼 alles 40px omhoog
+            offset: const Offset(0, -40),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                /// 🎥 VIDEO (lager geplaatst)
                 Transform.translate(
-                  offset: const Offset(0, 20), // 🔽 alleen video naar beneden
+                  offset: const Offset(0, 20),
                   child:
                       _videoController.value.isInitialized
                           ? SizedBox(
@@ -81,7 +80,6 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                 ),
 
-                /// 🟦 REBOOT CONTAINER
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
@@ -104,11 +102,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
                 const SizedBox(height: 24),
 
-                /// 🔽 LOGO + LOADER
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // Logo met afstand tot links
                     Padding(
                       padding: const EdgeInsets.only(left: 44),
                       child: Image.asset('assets/images/logo.png', width: 50),
@@ -116,7 +112,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
                     const SizedBox(width: 12),
 
-                    // Loader met vaste breedte + padding rechts
                     Padding(
                       padding: const EdgeInsets.only(right: 55),
                       child: SizedBox(

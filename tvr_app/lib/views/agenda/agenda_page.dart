@@ -98,7 +98,6 @@ class _AgendaPageState extends State<AgendaPage> {
           const Divider(color: Colors.white30, thickness: 1),
           const SizedBox(height: 10),
 
-          // Vrijdag-balk met favorietenfilter
           GestureDetector(
             onTap: () {
               setState(() {
@@ -163,7 +162,6 @@ class _AgendaPageState extends State<AgendaPage> {
 
           const SizedBox(height: 30),
 
-          // Zaterdag-balk
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 12),

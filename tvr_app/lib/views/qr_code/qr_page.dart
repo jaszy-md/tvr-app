@@ -32,11 +32,9 @@ class _QRPageState extends State<QRPage> {
           _emailController.text,
         );
 
-        // ✅ Velden leegmaken
         _nameController.clear();
         _emailController.clear();
 
-        // ✅ Toon custom dialog
         if (context.mounted) {
           showDialog(
             context: context,

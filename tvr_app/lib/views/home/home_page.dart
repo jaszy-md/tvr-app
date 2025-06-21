@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     demo2Controller.reset();
     ticketBroken = false;
     setState(() {
-      _textAnimationKey++; // 🔁 forceer rebuild van AnimatedTextKit
+      _textAnimationKey++;
     });
     await Future.delayed(const Duration(milliseconds: 300));
     demo1Controller.forward();
@@ -99,9 +99,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Color(
-                            0xFF122846,
-                          ).withOpacity(0.4), // ✅ zonder const
+                          color: Color(0xFF122846).withOpacity(0.4),
                           offset: const Offset(0, 1),
                           blurRadius: 10,
                         ),
@@ -132,11 +130,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             height: 1.4,
                           ),
                           child: SizedBox(
-                            width: double.infinity, // zodat center align werkt
+                            width: double.infinity,
                             child: AnimatedTextKit(
-                              key: ValueKey(
-                                _textAnimationKey,
-                              ), // ✅ unieke key per refresh
+                              key: ValueKey(_textAnimationKey),
                               isRepeatingAnimation: false,
                               totalRepeatCount: 1,
                               animatedTexts: [

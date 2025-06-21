@@ -17,7 +17,6 @@ class ScoreboardService {
     }).toList();
   }
 
-  /// Zet bij het openen van de pagina alle score_position op 0
   Future<void> resetAllPositions() async {
     final snapshot = await _participants.get();
     for (var doc in snapshot.docs) {
@@ -25,7 +24,6 @@ class ScoreboardService {
     }
   }
 
-  /// Kies bij klik op knop willekeurig 3 winnaars
   Future<void> shuffleWinners() async {
     final snapshot = await _participants.get();
     final docs = snapshot.docs;
@@ -36,12 +34,10 @@ class ScoreboardService {
     final top3 = shuffled.take(3).toList();
     final rest = shuffled.skip(3);
 
-    // 🔁 Top 3 updates 1 voor 1 — synchroon voor betrouwbaarheid
     await top3[0].reference.set({'score_position': 1}, SetOptions(merge: true));
     await top3[1].reference.set({'score_position': 2}, SetOptions(merge: true));
     await top3[2].reference.set({'score_position': 3}, SetOptions(merge: true));
 
-    // ⏩ De rest mag asynchroon (0 is minder kritisch)
     await Future.wait(
       rest.map(
         (doc) =>
